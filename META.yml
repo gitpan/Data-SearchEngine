@@ -1,0 +1,29 @@
+---
+abstract: 'A role for search engines and serializable results.'
+author:
+  - 'Cory G Watson <gphat@cpan.org>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+  Test::More: 0.88
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+distribution_type: module
+generated_by: 'Module::Install version 0.91'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Data-SearchEngine
+no_index:
+  directory:
+    - inc
+    - t
+requires:
+  Digest::SHA1: 2.12
+  Moose: 0.89
+  MooseX::AttributeHelpers: 0.21
+  MooseX::Storage: 0.21
+  Time::HiRes: 1.9719
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.01
