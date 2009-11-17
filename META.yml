@@ -20,10 +20,11 @@ no_index:
     - t
 requires:
   Digest::SHA1: 2.12
+  JSON::Any: 0
   Moose: 0.89
   MooseX::AttributeHelpers: 0.21
   MooseX::Storage: 0.21
   Time::HiRes: 1.9719
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.02
+version: 0.03
