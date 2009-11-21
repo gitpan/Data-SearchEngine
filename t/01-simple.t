@@ -30,24 +30,24 @@ my @data = (
     },
 );
 
-my $verifier = SearchEngineWee->new;
+my $searcher = SearchEngineWee->new;
 foreach my $prod (@data) {
-    $verifier->add($prod);
+    $searcher->add($prod);
 }
 
 {
     my $query = Data::SearchEngine::Query->new(query => 'Fish');
-    my $results = $verifier->query($query);
+    my $results = $searcher->search($query);
     cmp_ok($results->query->query, 'eq', 'Fish', 'query');
-    cmp_ok($results->total_count, '==', 4, '4 items in results');
+    cmp_ok($results->pager->total_entries, '==', 4, '4 items in results');
     cmp_ok($results->get(0)->score, '==', 2, 'score is 2');
 }
 
 {
     my $query = Data::SearchEngine::Query->new(query => 'fish blue');
-    my $results = $verifier->query($query);
+    my $results = $searcher->search($query);
     cmp_ok($results->query->query, 'eq', 'fish blue', 'query');
-    cmp_ok($results->total_count, '==', 4, '4 items in results');
+    cmp_ok($results->pager->total_entries, '==', 4, '4 items in results');
 
     my $first = $results->get(0);
     cmp_ok($first->score, '==', 4, 'high score is 4');

@@ -1,6 +1,7 @@
 package # Hide from CPAN
     SearchEngineWee;
 use Moose;
+use Data::Page;
 
 with ('Data::SearchEngine', 'Data::SearchEngine::Modifiable');
 
@@ -9,11 +10,11 @@ use Data::SearchEngine::Results;
 use Time::HiRes qw(time);
 
 has index => (
-    metaclass => 'Collection::Hash',
-    is        => 'rw',
-    isa       => 'HashRef[HashRef]',
-    default   => sub { {} },
-    provides  => {
+    traits  => [ 'Hash' ],
+    is      => 'rw',
+    isa     => 'HashRef[HashRef]',
+    default => sub { {} },
+    handles     => {
         delete  => 'delete',
         exists  => 'exists',
         get     => 'get',
@@ -34,11 +35,12 @@ sub present {
     return $self->exists($prod->{name});
 }
 
-sub query {
+sub search {
     my ($self, $query) = @_;
 
     my $results = Data::SearchEngine::Results->new(
-        query => $query
+        query => $query,
+        pager => Data::Page->new
     );
 
     $query = lc($query->query);
@@ -89,7 +91,8 @@ sub query {
     foreach my $s (@sorted_keys) {
         push(@sorted, $items{$s});
     }
-    $results->total_count(scalar(@sorted));
+
+    $results->pager->total_entries(scalar(@sorted));
     $results->items(\@sorted);
     $results->elapsed(time - $start);
 
