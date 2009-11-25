@@ -1,5 +1,5 @@
 ---
-abstract: 'A role for search engines and serializable results.'
+abstract: 'A role for search engine abstraction.'
 author:
   - 'Cory G Watson <gphat@cpan.org>'
 build_requires:
@@ -19,12 +19,12 @@ no_index:
     - inc
     - t
 requires:
-  Data::Page: 0
-  Digest::SHA1: 2.12
+  Data::Paginator: 0
+  Digest::MD5: 2.39
   JSON::Any: 0
   Moose: 0.89
   MooseX::Storage: 0.21
   Time::HiRes: 1.9719
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.05
+version: 0.06
