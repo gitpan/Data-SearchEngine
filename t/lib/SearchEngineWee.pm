@@ -10,11 +10,11 @@ use Data::SearchEngine::Results;
 use Time::HiRes qw(time);
 
 has index => (
-    traits  => [ 'Hash' ],
-    is      => 'rw',
-    isa     => 'HashRef[HashRef]',
-    default => sub { {} },
-    handles     => {
+    traits => [ 'Hash' ],
+    is        => 'rw',
+    isa       => 'HashRef[HashRef]',
+    default   => sub { {} },
+    handles  => {
         delete  => 'delete',
         exists  => 'exists',
         get     => 'get',

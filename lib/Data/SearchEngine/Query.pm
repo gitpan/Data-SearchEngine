@@ -23,8 +23,8 @@ has filters => (
         filter_names=> 'keys',
         get_filter => 'get',
         set_filter => 'set',
-    },
-    predicate => 'has_filters'
+        has_filters => 'count'
+    }
 );
 
 has order => (
