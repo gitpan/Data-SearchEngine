@@ -19,7 +19,7 @@ no_index:
     - inc
     - t
 requires:
-  Data::Paginator: 0
+  Data::Paginator: 0.03
   Digest::MD5: 2.39
   JSON::Any: 0
   Moose: 0.89
@@ -27,4 +27,4 @@ requires:
   Time::HiRes: 1.9719
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.06
+version: 0.07
