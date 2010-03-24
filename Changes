@@ -1,5 +1,8 @@
 Revision history for Data-SearchEngine
 
+0.15
+  * Make query rw
+
 0.14
   * Allow original_query to be undefined, since query might be
 

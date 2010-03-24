@@ -50,7 +50,7 @@ has page => (
 
 has query => (
     traits => [qw(Digestable)],
-    is => 'ro',
+    is => 'rw',
     isa => 'Str',
     predicate => 'has_query'
 );
