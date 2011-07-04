@@ -1,12 +1,20 @@
 package Data::SearchEngine;
 BEGIN {
-  $Data::SearchEngine::VERSION = '0.21';
+  $Data::SearchEngine::VERSION = '0.22';
 }
 use Moose::Role;
 
 # ABSTRACT: A role for search engine abstraction.
 
 requires qw(search);
+
+
+
+has debug => (
+    is => 'rw',
+    isa => 'Any',
+    predicate => 'is_debug'
+);
 
 
 has defaults => (
@@ -32,7 +40,7 @@ Data::SearchEngine - A role for search engine abstraction.
 
 =head1 VERSION
 
-version 0.21
+version 0.22
 
 =head1 SYNOPSIS
 
@@ -121,6 +129,11 @@ digest of the Query for caching.
 
 =head1 ATTRIBUTES
 
+=head2 debug
+
+An attribute that signals the backend should operate in a debugging mode.
+Please see the implementation module for specifics on how to use this.
+
 =head2 defaults
 
 The C<defaults> attribute is a simple HashRef that backends may use to get
@@ -128,6 +141,10 @@ default settings from the user.  The implementation of C<search> may then use
 these defaults when setting up instances of a search.
 
 =head1 METHODS
+
+=head2 is_debug
+
+Method for determining if the debug attribute has been set.
 
 =head2 get_default ($key)
 
