@@ -1,11 +1,18 @@
 package Data::SearchEngine::Results::Spellcheck;
+BEGIN {
+  $Data::SearchEngine::Results::Spellcheck::VERSION = '0.21';
+}
 use Moose::Role;
+
+# ABSTRACT: spellcheck role for Spellchecking
+
 
 has spell_collation => (
     is => 'rw',
     isa => 'Str',
     predicate => 'has_spell_collation'
 );
+
 
 has spell_frequencies => (
     traits => [ 'Hash' ],
@@ -17,6 +24,7 @@ has spell_frequencies => (
         get_spell_frequency  => 'get'
     }
 );
+
 
 has spell_suggestions => (
     traits => [ 'Hash' ],
@@ -30,18 +38,24 @@ has spell_suggestions => (
     }
 );
 
+
 has spelled_correctly => (
     is => 'rw',
     isa => 'Bool',
 );
 
+no Moose::Role;
 1;
-
 __END__
+=pod
 
 =head1 NAME
 
 Data::SearchEngine::Results::Spellcheck - spellcheck role for Spellchecking
+
+=head1 VERSION
+
+version 0.21
 
 =head1 SYNOPSIS
 
@@ -91,13 +105,13 @@ Boolean value to signal to the front end if the query was spelled correctly.
 
 Gets the frequency for the specified word.
 
-=head2 get_spell_suggestion ($word)
-
-Gets the suggestion with the specified name.  Returns undef if one does not exist.
-
 =head2 set_spell_frequency ($word, $frequency)
 
 Sets the frequency for the provided word.
+
+=head2 get_spell_suggestion ($word)
+
+Gets the suggestion with the specified name.  Returns undef if one does not exist.
 
 =head2 set_spell_suggestion
 
@@ -109,14 +123,14 @@ Returns an array of all the keys of C<suggestions>.
 
 =head1 AUTHOR
 
-Cory G Watson, C<< <gphat at cpan.org> >>
+Cory G Watson <gphat@cpan.org>
 
-=head1 COPYRIGHT & LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2009 Cory G Watson
+This software is copyright (c) 2011 by Cold Hard Code, LLC.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-See http://dev.perl.org/licenses/ for more information.
+=cut
+

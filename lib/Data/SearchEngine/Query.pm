@@ -1,11 +1,17 @@
 package Data::SearchEngine::Query;
+BEGIN {
+  $Data::SearchEngine::Query::VERSION = '0.21';
+}
 use Moose;
 use MooseX::Storage;
+
+# ABSTRACT: Query to pass to an engine.
 
 with 'MooseX::Storage::Deferred';
 
 use Data::SearchEngine::Meta::Attribute::Trait::Digestable;
 use Digest::MD5;
+
 
 has count => (
     traits => [qw(Digestable)],
@@ -13,6 +19,7 @@ has count => (
     isa => 'Int',
     default => 10
 );
+
 
 has filters => (
     traits => [ 'Hash', 'Digestable' ],
@@ -27,33 +34,55 @@ has filters => (
     }
 );
 
-has order => (
+
+has index => (
     traits => [qw(Digestable)],
     is => 'rw',
     isa => 'Str',
+    predicate => 'has_index'
+);
+
+
+has order => (
+    traits => [qw(Digestable)],
+    is => 'rw',
+    isa => 'Str|HashRef',
     predicate => 'has_order'
 );
 
+
 has original_query => (
     traits => [qw(Digestable)],
-    is => 'ro',
+    is => 'rw',
     isa => 'Str|Undef',
     lazy => 1,
     default => sub { my $self = shift; return $self->query }
 );
 
+
 has page => (
+    traits => [qw(Digestable)],
     is => 'ro',
     isa => 'Int',
     default => 1
 );
 
+
 has query => (
     traits => [qw(Digestable)],
     is => 'rw',
-    isa => 'Str',
+    isa => 'Str|HashRef|ArrayRef',
     predicate => 'has_query'
 );
+
+
+has type => (
+    traits => [qw(Digestable)],
+    is => 'rw',
+    isa => 'Str',
+    predicate => 'has_type'
+);
+
 
 sub digest {
     my $self = shift;
@@ -80,21 +109,27 @@ sub digest {
     return $digester->b64digest;
 }
 
+
 sub has_filter_like {
     my ($self, $predicate) = @_;
 
     return grep { $predicate->() } $self->filter_names;
 }
 
+no Moose;
 __PACKAGE__->meta->make_immutable;
 
 1;
-
 __END__
+=pod
 
 =head1 NAME
 
 Data::SearchEngine::Query - Query to pass to an engine.
+
+=head1 VERSION
+
+version 0.21
 
 =head1 SYNOPSIS
 
@@ -118,6 +153,11 @@ A HashRef of filters used with the query.  The key should be the filter name
 and the value is the filter's value.  Consult the documentation for your
 backend to see how this is used.
 
+=head2 index
+
+The index we will be querying.  Some search engine backends allow multiple
+indices and need this attribute.
+
 =head2 order
 
 The order in which the results should be sorted.
@@ -135,14 +175,18 @@ Which page of results to show.
 
 =head2 query
 
-The query string to search for.
+The query string to search for.  This attribute may be a Str, ArrayRef or a
+HashRef.  Some backends (like ElasticSearch) require complex data structures
+to perform searches and need a HashRef for their queries. B<NOTE:> It is
+advised that you set C<original_query> to a string so that the results
+object has a clean string to show end-users.
+
+=head2 type
+
+The type of query to use.  Some backends (Solr and ElasticSearch) will use a
+query type, if specified.
 
 =head1 METHODS
-
-=head2 digest
-
-Returns a unique digest identifying this Query.  Useful as a key when
-caching.
 
 =head2 filter_names
 
@@ -156,6 +200,26 @@ Gets the value for the specified filter.
 
 Predicate that returns true if this query has filters.
 
+=head2 set_filter
+
+Sets the value for the specified filter.
+
+=head2 has_index
+
+Returns true if this query has an index specified.
+
+=head2 has_query
+
+Returns true if this Query has a query string.
+
+=head2 has_type
+
+Returns true if this Query has a type set.
+
+=head2 digest
+
+Returns a unique digest identifying this Query.  Useful as a key when caching.
+
 =head2 has_filter_like
 
 Returns true if any of the filter names match the provided subroutine:
@@ -163,24 +227,16 @@ Returns true if any of the filter names match the provided subroutine:
   $query->set_filter('foo', 'bar');
   $query->has_filter_like(sub { /^fo/ })s; # true!
 
-=head2 has_query
-
-Returns true if this Query has a query string.
-
-=head2 set_filter
-
-Sets the value for the specified filter.
-
 =head1 AUTHOR
 
-Cory G Watson, C<< <gphat at cpan.org> >>
+Cory G Watson <gphat@cpan.org>
 
-=head1 COPYRIGHT & LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2009 Cory G Watson
+This software is copyright (c) 2011 by Cold Hard Code, LLC.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-See http://dev.perl.org/licenses/ for more information.
+=cut
+

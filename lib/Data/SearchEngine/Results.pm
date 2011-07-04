@@ -1,13 +1,21 @@
 package Data::SearchEngine::Results;
+BEGIN {
+  $Data::SearchEngine::Results::VERSION = '0.21';
+}
 use Moose;
 use MooseX::Storage;
 
+# ABSTRACT: Results of a Data::SearchEngine search
+
 with 'MooseX::Storage::Deferred';
+
 
 has elapsed => (
     is => 'rw',
     isa => 'Num'
 );
+
+
 has items => (
     traits => [ 'Array' ],
     is => 'rw',
@@ -19,11 +27,15 @@ has items => (
         add     => 'push',
     }
 );
+
+
 has query => (
     is => 'ro',
     isa => 'Data::SearchEngine::Query',
     required => 1,
 );
+
+
 has pager => (
     is => 'ro',
     isa => 'Data::SearchEngine::Paginator'
@@ -34,22 +46,23 @@ __PACKAGE__->meta->make_immutable;
 1;
 
 __END__
+=pod
 
 =head1 NAME
 
-Data::SearchEngine::Results - Results of a Data::SearchEngine serach
+Data::SearchEngine::Results - Results of a Data::SearchEngine search
+
+=head1 VERSION
+
+version 0.21
 
 =head1 SYNOPSIS
 
 The Results object holds the list of items found during a query.  They are
-usually sorted by a score.  This object provides some standard attributes
-you are likely to use.
+usually sorted by a score. This object provides some standard attributes you
+are likely to use.
 
-    use Data::SearchEngine::Item;
-    use Data::SearchEngine::Results;
-    use Time::HiRes;
-
-    sub query {
+    sub search {
 
         # boring, search specific implementation
         
@@ -86,54 +99,42 @@ may serialize it thusly:
 
 =head1 ATTRIBUTES
 
-=head2 add ($item)
-
-Add an item to this result.
-
-=head2 count
-
-Count of items in this result.
-
 =head2 elapsed
 
 The time it took to complete this search.
-
-=head2 get ($n)
-
-Get the nth item.
 
 =head2 items
 
 The list of L<Data::SearchEngine::Item>s found for the query.
 
-=head2 pager
-
-The L<Data::Page> for this result.
-
 =head2 query
 
 The L<Data::SearchEngine::Query> that yielded this Results object.
 
+=head2 pager
+
+The L<Data::Page> for this result.
+
 =head1 METHODS
 
-=head add
+=head2 add ($item)
 
-Appends an Item onto the end of this Results object's item list.
+Add an item to this result.
 
-=head get
+=head2 get ($n)
 
-Gets the item at the specified index.
+Get the nth item.
 
 =head1 AUTHOR
 
-Cory G Watson, C<< <gphat at cpan.org> >>
+Cory G Watson <gphat@cpan.org>
 
-=head1 COPYRIGHT & LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2009 Cory G Watson
+This software is copyright (c) 2011 by Cold Hard Code, LLC.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-See http://dev.perl.org/licenses/ for more information.
+=cut
+

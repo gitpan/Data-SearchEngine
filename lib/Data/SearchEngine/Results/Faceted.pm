@@ -1,5 +1,11 @@
 package Data::SearchEngine::Results::Faceted;
+BEGIN {
+  $Data::SearchEngine::Results::Faceted::VERSION = '0.21';
+}
 use Moose::Role;
+
+# ABSTRACT: Facet role for Results
+
 
 has facets => (
     traits => [ 'Hash' ],
@@ -14,12 +20,16 @@ has facets => (
 );
 
 1;
-
 __END__
+=pod
 
 =head1 NAME
 
 Data::SearchEngine::Results::Faceted - Facet role for Results
+
+=head1 VERSION
+
+version 0.21
 
 =head1 SYNOPSIS
 
@@ -49,24 +59,24 @@ facet and the values are the facet's value.
 
 Returns an array of all the keys of C<facets>.
 
-=head get_facet
+=head2 get_facet
 
 Gets the facet with the specified name.  Returns undef if one does not exist.
 
-=head set_facet
+=head2 set_facet
 
 Sets the facet with the specified name.
 
 =head1 AUTHOR
 
-Cory G Watson, C<< <gphat at cpan.org> >>
+Cory G Watson <gphat@cpan.org>
 
-=head1 COPYRIGHT & LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2009 Cory G Watson
+This software is copyright (c) 2011 by Cold Hard Code, LLC.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-See http://dev.perl.org/licenses/ for more information.
+=cut
+

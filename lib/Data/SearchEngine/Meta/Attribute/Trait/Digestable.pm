@@ -1,5 +1,11 @@
 package Data::SearchEngine::Meta::Attribute::Trait::Digestable;
+BEGIN {
+  $Data::SearchEngine::Meta::Attribute::Trait::Digestable::VERSION = '0.21';
+}
 use Moose::Role;
+
+# ABSTRACT: Digest flag & configuration
+
 
 has digest_value => (
     is => 'ro',
@@ -7,13 +13,18 @@ has digest_value => (
     predicate => 'has_digest_value'
 );
 
+no Moose::Role;
 1;
-
 __END__
+=pod
 
 =head1 NAME
 
 Data::SearchEngine::Meta::Attribute::Trait::Digestable - Digest flag & configuration
+
+=head1 VERSION
+
+version 0.21
 
 =head1 SYNOPSIS
 
@@ -46,14 +57,14 @@ for adding to the Query's digst.
 
 =head1 AUTHOR
 
-Cory G Watson, C<< <gphat at cpan.org> >>
+Cory G Watson <gphat@cpan.org>
 
-=head1 COPYRIGHT & LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2009 Cory G Watson
+This software is copyright (c) 2011 by Cold Hard Code, LLC.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-See http://dev.perl.org/licenses/ for more information.
+=cut
+
