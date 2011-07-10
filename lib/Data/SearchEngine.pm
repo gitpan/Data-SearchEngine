@@ -1,6 +1,6 @@
 package Data::SearchEngine;
 BEGIN {
-  $Data::SearchEngine::VERSION = '0.22';
+  $Data::SearchEngine::VERSION = '0.23';
 }
 use Moose::Role;
 
@@ -40,7 +40,7 @@ Data::SearchEngine - A role for search engine abstraction.
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 SYNOPSIS
 

@@ -1,6 +1,6 @@
 package Data::SearchEngine::Query;
 BEGIN {
-  $Data::SearchEngine::Query::VERSION = '0.22';
+  $Data::SearchEngine::Query::VERSION = '0.23';
 }
 use Moose;
 use MooseX::Storage;
@@ -21,10 +21,24 @@ has count => (
 );
 
 
+has facets => (
+    traits => [ 'Hash', 'Digestable' ],
+    is => 'rw',
+    isa => 'HashRef[Any]',
+    default => sub { {} },
+    handles => {
+        facet_names => 'keys',
+        get_facet => 'get',
+        set_facet => 'set',
+        has_facets => 'count'
+    }
+);
+
+
 has filters => (
     traits => [ 'Hash', 'Digestable' ],
     is => 'rw',
-    isa => 'HashRef[Str]',
+    isa => 'HashRef[Any]',
     default => sub { {} },
     handles => {
         filter_names=> 'keys',
@@ -38,7 +52,7 @@ has filters => (
 has index => (
     traits => [qw(Digestable)],
     is => 'rw',
-    isa => 'Str',
+    isa => 'Str|ArrayRef[Str]',
     predicate => 'has_index'
 );
 
@@ -129,7 +143,7 @@ Data::SearchEngine::Query - Query to pass to an engine.
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 SYNOPSIS
 
@@ -146,6 +160,12 @@ L<Data::SearchEngine::Meta::Attribute::Trait::Digestable>.
 =head2 count
 
 The number of results this query should return.
+
+=head2 facets
+
+A HashRef of facets used with the query.  The key should be the facet name and
+the value is the facet's value.  Consult the documentation for your backend to
+see how this is used (if at all).
 
 =head2 filters
 
@@ -187,6 +207,23 @@ The type of query to use.  Some backends (Solr and ElasticSearch) will use a
 query type, if specified.
 
 =head1 METHODS
+
+=head2 facet_names
+
+Get the names of all facets.
+
+=head2 get_facet
+
+Get the value for the specified facet.
+
+=head2 has_facets
+
+Predicate that returns true if this Query has any facets.  Actually, it
+returns the count but it does the same thing.
+
+=head2 set_facet
+
+Set the value for the specified facet.
 
 =head2 filter_names
 

@@ -25,4 +25,4 @@ requires:
   MooseX::Storage::Deferred: 0
 resources:
   repository: https://github.com/gphat/data-searchengine
-version: 0.22
+version: 0.23

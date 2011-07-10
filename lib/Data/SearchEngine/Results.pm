@@ -1,6 +1,6 @@
 package Data::SearchEngine::Results;
 BEGIN {
-  $Data::SearchEngine::Results::VERSION = '0.22';
+  $Data::SearchEngine::Results::VERSION = '0.23';
 }
 use Moose;
 use MooseX::Storage;
@@ -54,7 +54,7 @@ Data::SearchEngine::Results - Results of a Data::SearchEngine search
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 SYNOPSIS
 
