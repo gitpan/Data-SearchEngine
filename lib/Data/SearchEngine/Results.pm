@@ -1,6 +1,6 @@
 package Data::SearchEngine::Results;
 BEGIN {
-  $Data::SearchEngine::Results::VERSION = '0.23';
+  $Data::SearchEngine::Results::VERSION = '0.24';
 }
 use Moose;
 use MooseX::Storage;
@@ -54,29 +54,31 @@ Data::SearchEngine::Results - Results of a Data::SearchEngine search
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 SYNOPSIS
 
-The Results object holds the list of items found during a query.  They are
-usually sorted by a score. This object provides some standard attributes you
-are likely to use.
+    # An example search implementation
 
     sub search {
+        my ($self, $query) = @_;
 
         # boring, search specific implementation
         
         my $results = Data::SearchEngine::Results->new(
-            query       => $query
-            pager       => Data::Page->new(...)
+            query       => $query,
+            pager       => Data::SearchEngine::Paginator->new # Data::Paginator subclass
         );
 
+        my @sorted_products; # fill with a search or something
+        my $scores; # fill with search scores
+
         my $start = time;
-        foreach $product (@sorted_products) {
+        foreach my $product (@sorted_products) {
             my $item = Data::SearchEngine::Item->new(
                 id      => $product->id,            # unique product id
                 score   => $scores->{$product->id}  # make your own scores
-            ));
+            );
 
             $item->set_value('url', 'http://example.com/product/'.$product->id);
             $item->set_value('price', $product->price);
@@ -87,6 +89,12 @@ are likely to use.
 
         return $results;
     }
+
+=head1 DESCRIPTION
+
+The Results object holds the list of items found during a query.  They are
+usually sorted by a score. This object provides some standard attributes you
+are likely to use.
 
 =head1 SERIALIZATION
 

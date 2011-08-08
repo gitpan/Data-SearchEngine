@@ -1,6 +1,6 @@
 package Moose::Meta::Attribute::Custom::Trait::Digestable;
 BEGIN {
-  $Moose::Meta::Attribute::Custom::Trait::Digestable::VERSION = '0.23';
+  $Moose::Meta::Attribute::Custom::Trait::Digestable::VERSION = '0.24';
 }
 
 sub register_implementation { 'Data::SearchEngine::Meta::Attribute::Trait::Digestable' }
@@ -15,7 +15,7 @@ Moose::Meta::Attribute::Custom::Trait::Digestable
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 AUTHOR
 

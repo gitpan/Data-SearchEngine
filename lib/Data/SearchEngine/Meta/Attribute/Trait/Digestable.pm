@@ -1,6 +1,6 @@
 package Data::SearchEngine::Meta::Attribute::Trait::Digestable;
 BEGIN {
-  $Data::SearchEngine::Meta::Attribute::Trait::Digestable::VERSION = '0.23';
+  $Data::SearchEngine::Meta::Attribute::Trait::Digestable::VERSION = '0.24';
 }
 use Moose::Role;
 
@@ -24,9 +24,9 @@ Data::SearchEngine::Meta::Attribute::Trait::Digestable - Digest flag & configura
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
-=head1 SYNOPSIS
+=head1 DESCRIPTION
 
 If a L<Data::SearchEngine::Query> attribute has this meta-attribute, then it
 will be added to the digest that identifies the uniqueness of a Query.

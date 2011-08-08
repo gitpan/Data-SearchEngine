@@ -1,6 +1,6 @@
 package Data::SearchEngine::Item;
 BEGIN {
-  $Data::SearchEngine::Item::VERSION = '0.23';
+  $Data::SearchEngine::Item::VERSION = '0.24';
 }
 use Moose;
 use MooseX::Storage;
@@ -48,11 +48,13 @@ Data::SearchEngine::Item - An individual search result.
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 SYNOPSIS
 
-  $result->add(Data::SearchEngine::Item->new(
+  my $results = Data::SearchEngine::Results->new;
+
+  $results->add(Data::SearchEngine::Item->new(
     id => 'SKU',
     values => {
         name => 'Foobar',

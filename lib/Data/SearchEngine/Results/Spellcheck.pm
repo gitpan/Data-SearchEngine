@@ -1,6 +1,6 @@
 package Data::SearchEngine::Results::Spellcheck;
 BEGIN {
-  $Data::SearchEngine::Results::Spellcheck::VERSION = '0.23';
+  $Data::SearchEngine::Results::Spellcheck::VERSION = '0.24';
 }
 use Moose::Role;
 
@@ -55,21 +55,25 @@ Data::SearchEngine::Results::Spellcheck - spellcheck role for Spellchecking
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 SYNOPSIS
 
     package Data::SeachEngine::Foo;
+    use Moose;
 
     with 'Data::SearchEngine::Results::Spellcheck';
     
     sub search {
         # do stuff
+        my $results = Data::SearchEngine::Results->new;
+        
         $results->set_spell_suggestion('popuar', 
-          Data::SearchEngine::Results::Spellcheck::Suggestion->new(
-            word => 'popular',  # the suggested replacement
-            frequency => 12     # optional, how often it occurs in the index
-          );
+            Data::SearchEngine::Results::Spellcheck::Suggestion->new(
+                word => 'popular',  # the suggested replacement
+                frequency => 12     # optional, how often it occurs in the index
+            )
+        );
     }
 
 =head1 DESCRIPTION

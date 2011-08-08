@@ -1,6 +1,6 @@
 package Data::SearchEngine;
 BEGIN {
-  $Data::SearchEngine::VERSION = '0.23';
+  $Data::SearchEngine::VERSION = '0.24';
 }
 use Moose::Role;
 
@@ -40,11 +40,12 @@ Data::SearchEngine - A role for search engine abstraction.
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 SYNOPSIS
 
   package Data::SearchEngine::MySearch;
+  use Moose;
 
   with 'Data::SearchEngine';
 
@@ -57,6 +58,8 @@ version 0.23
         query => $query,
         pager => # ... make a Data::Page
     );
+
+    my @hits; # Populate with hits somehow
 
     foreach my $hit (@hits) {
         $result->add(Data::SearchEngine::Item->new(

@@ -1,6 +1,6 @@
 package Data::SearchEngine::Query;
 BEGIN {
-  $Data::SearchEngine::Query::VERSION = '0.23';
+  $Data::SearchEngine::Query::VERSION = '0.24';
 }
 use Moose;
 use MooseX::Storage;
@@ -143,9 +143,9 @@ Data::SearchEngine::Query - Query to pass to an engine.
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
-=head1 SYNOPSIS
+=head1 DESCRIPTION
 
 The query object has some common attributes one would expect when performing
 a search. It has the added benefit of producing a digest that can be used
