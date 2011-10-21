@@ -9,32 +9,33 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'A role for search engine abstraction.',
-  'AUTHOR' => 'Cory G Watson <gphat@cpan.org>',
-  'BUILD_REQUIRES' => {
-    'Test::More' => '0',
-    'Time::HiRes' => '0'
+  "ABSTRACT" => "A role for search engine abstraction.",
+  "AUTHOR" => "Cory G Watson <gphat\@cpan.org>",
+  "BUILD_REQUIRES" => {
+    "Test::More" => 0,
+    "Time::HiRes" => 0,
+    "strict" => 0
   },
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.30'
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'Data-SearchEngine',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'Data::SearchEngine',
-  'PREREQ_PM' => {
-    'Data::Paginator' => '0.03',
-    'Digest::MD5' => '0',
-    'JSON::Any' => '0',
-    'JSON::XS' => '0',
-    'Moose' => '0',
-    'Moose::Role' => '0',
-    'MooseX::Storage' => '0',
-    'MooseX::Storage::Deferred' => '0'
+  "DISTNAME" => "Data-SearchEngine",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "Data::SearchEngine",
+  "PREREQ_PM" => {
+    "Data::Paginator" => "0.03",
+    "Digest::MD5" => 0,
+    "JSON::Any" => 0,
+    "JSON::XS" => 0,
+    "Moose" => 0,
+    "Moose::Role" => 0,
+    "MooseX::Storage" => 0,
+    "MooseX::Storage::Deferred" => 0
   },
-  'VERSION' => '0.24',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "0.25",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 

@@ -4,7 +4,7 @@
       "Cory G Watson <gphat@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200007, CPAN::Meta::Converter version 2.110440",
+   "generated_by" : "Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112150",
    "license" : [
       "perl_5"
    ],
@@ -34,7 +34,8 @@
       "test" : {
          "requires" : {
             "Test::More" : 0,
-            "Time::HiRes" : 0
+            "Time::HiRes" : 0,
+            "strict" : 0
          }
       }
    },
@@ -45,6 +46,6 @@
          "url" : "https://github.com/gphat/data-searchengine"
       }
    },
-   "version" : "0.24"
+   "version" : "0.25"
 }
 

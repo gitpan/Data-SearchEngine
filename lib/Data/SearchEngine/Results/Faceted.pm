@@ -1,6 +1,6 @@
 package Data::SearchEngine::Results::Faceted;
-BEGIN {
-  $Data::SearchEngine::Results::Faceted::VERSION = '0.24';
+{
+  $Data::SearchEngine::Results::Faceted::VERSION = '0.25';
 }
 use Moose::Role;
 
@@ -29,7 +29,7 @@ Data::SearchEngine::Results::Faceted - Facet role for Results
 
 =head1 VERSION
 
-version 0.24
+version 0.25
 
 =head1 SYNOPSIS
 

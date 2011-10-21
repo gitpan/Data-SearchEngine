@@ -1,6 +1,6 @@
 package Data::SearchEngine::Item;
-BEGIN {
-  $Data::SearchEngine::Item::VERSION = '0.24';
+{
+  $Data::SearchEngine::Item::VERSION = '0.25';
 }
 use Moose;
 use MooseX::Storage;
@@ -26,7 +26,7 @@ has score => (
 has values => (
     traits  => [ 'Hash' ],
     is      => 'rw',
-    isa     => 'HashRef[Str|ArrayRef[Str]|Undef]',
+    isa     => 'HashRef',
     default => sub { {} },
     handles => {
         keys        => 'keys',
@@ -48,7 +48,7 @@ Data::SearchEngine::Item - An individual search result.
 
 =head1 VERSION
 
-version 0.24
+version 0.25
 
 =head1 SYNOPSIS
 
