@@ -1,6 +1,6 @@
 package Data::SearchEngine::Query;
 {
-  $Data::SearchEngine::Query::VERSION = '0.25';
+  $Data::SearchEngine::Query::VERSION = '0.26';
 }
 use Moose;
 use MooseX::Storage;
@@ -18,6 +18,13 @@ has count => (
     is => 'ro',
     isa => 'Int',
     default => 10
+);
+
+
+has debug => (
+    is => 'rw',
+    isa => 'Str',
+    predicate => 'has_debug'
 );
 
 
@@ -143,7 +150,7 @@ Data::SearchEngine::Query - Query to pass to an engine.
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 DESCRIPTION
 
@@ -160,6 +167,13 @@ L<Data::SearchEngine::Meta::Attribute::Trait::Digestable>.
 =head2 count
 
 The number of results this query should return.
+
+=head2 debug
+
+A string value denoting that this query should include debugging information
+in the response.  Uses a string as the type because some search indexes
+allow you to specify the type of debugging.  For those that just use a flag,
+the predicate should be checked so that any true value results in debugging.
 
 =head2 facets
 
@@ -207,6 +221,10 @@ The type of query to use.  Some backends (Solr and ElasticSearch) will use a
 query type, if specified.
 
 =head1 METHODS
+
+=head2 has_debug
+
+Returns true if this Query has a value for debug.
 
 =head2 facet_names
 

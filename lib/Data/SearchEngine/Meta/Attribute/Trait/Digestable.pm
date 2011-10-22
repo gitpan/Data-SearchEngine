@@ -1,6 +1,6 @@
 package Data::SearchEngine::Meta::Attribute::Trait::Digestable;
 {
-  $Data::SearchEngine::Meta::Attribute::Trait::Digestable::VERSION = '0.25';
+  $Data::SearchEngine::Meta::Attribute::Trait::Digestable::VERSION = '0.26';
 }
 use Moose::Role;
 
@@ -24,7 +24,7 @@ Data::SearchEngine::Meta::Attribute::Trait::Digestable - Digest flag & configura
 
 =head1 VERSION
 
-version 0.25
+version 0.26
 
 =head1 DESCRIPTION
 
