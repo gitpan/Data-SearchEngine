@@ -1,6 +1,6 @@
 package Data::SearchEngine::Results;
 {
-  $Data::SearchEngine::Results::VERSION = '0.26';
+  $Data::SearchEngine::Results::VERSION = '0.27';
 }
 use Moose;
 use MooseX::Storage;
@@ -44,7 +44,7 @@ has pager => (
 
 has raw => (
     is => 'ro',
-    isa => 'HashRef'
+    isa => 'Any'
 );
 
 __PACKAGE__->meta->make_immutable;
@@ -60,7 +60,7 @@ Data::SearchEngine::Results - Results of a Data::SearchEngine search
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 SYNOPSIS
 
@@ -131,9 +131,9 @@ The L<Data::Page> for this result.
 
 =head2 raw
 
-A raw hashref that a search backend may fill with the "raw" response it
+An attribute that a search backend may fill with the "raw" response it
 received.  This is useful for retrieving engine-specific information such
-as debugging or tracing information.
+as debugging or tracing information. Type is C<Any>.
 
 =head1 METHODS
 
