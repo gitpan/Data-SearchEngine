@@ -1,6 +1,6 @@
 package Data::SearchEngine::Results::Spellcheck::Suggestion;
 {
-  $Data::SearchEngine::Results::Spellcheck::Suggestion::VERSION = '0.27';
+  $Data::SearchEngine::Results::Spellcheck::Suggestion::VERSION = '0.28';
 }
 use Moose;
 
@@ -32,7 +32,7 @@ Data::SearchEngine::Results::Spellcheck::Suggestion
 
 =head1 VERSION
 
-version 0.27
+version 0.28
 
 =head1 AUTHOR
 

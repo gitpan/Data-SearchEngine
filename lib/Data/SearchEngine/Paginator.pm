@@ -1,6 +1,6 @@
 package Data::SearchEngine::Paginator;
 {
-  $Data::SearchEngine::Paginator::VERSION = '0.27';
+  $Data::SearchEngine::Paginator::VERSION = '0.28';
 }
 use Moose;
 
@@ -20,7 +20,7 @@ Data::SearchEngine::Paginator
 
 =head1 VERSION
 
-version 0.27
+version 0.28
 
 =head1 AUTHOR
 
