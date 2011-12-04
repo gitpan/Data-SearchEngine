@@ -1,6 +1,6 @@
 package Data::SearchEngine::Query;
 {
-  $Data::SearchEngine::Query::VERSION = '0.29';
+  $Data::SearchEngine::Query::VERSION = '0.30';
 }
 use Moose;
 use MooseX::Storage;
@@ -150,7 +150,7 @@ Data::SearchEngine::Query - Query to pass to an engine.
 
 =head1 VERSION
 
-version 0.29
+version 0.30
 
 =head1 DESCRIPTION
 

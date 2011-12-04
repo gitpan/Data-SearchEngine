@@ -27,7 +27,6 @@
             "JSON::XS" : 0,
             "Moose" : 0,
             "Moose::Role" : 0,
-            "MooseX::Clone" : 0,
             "MooseX::Storage" : 0,
             "MooseX::Storage::Deferred" : 0
          }
@@ -47,6 +46,6 @@
          "url" : "https://github.com/gphat/data-searchengine"
       }
    },
-   "version" : "0.29"
+   "version" : "0.30"
 }
 

@@ -1,6 +1,6 @@
 package Data::SearchEngine::Modifiable;
 {
-  $Data::SearchEngine::Modifiable::VERSION = '0.29';
+  $Data::SearchEngine::Modifiable::VERSION = '0.30';
 }
 use Moose::Role;
 
@@ -22,7 +22,7 @@ Data::SearchEngine::Modifiable - A role for search engines with an updateable in
 
 =head1 VERSION
 
-version 0.29
+version 0.30
 
 =head1 DESCRIPTION
 

@@ -1,13 +1,13 @@
 package Data::SearchEngine::Item;
 {
-  $Data::SearchEngine::Item::VERSION = '0.29';
+  $Data::SearchEngine::Item::VERSION = '0.30';
 }
 use Moose;
 use MooseX::Storage;
 
 # ABSTRACT: An individual search result.
 
-with qw(MooseX::Storage::Deferred MooseX::Clone);
+with qw(MooseX::Storage::Deferred);
 
 
 has id => (
@@ -49,7 +49,7 @@ Data::SearchEngine::Item - An individual search result.
 
 =head1 VERSION
 
-version 0.29
+version 0.30
 
 =head1 SYNOPSIS
 
@@ -84,10 +84,6 @@ The score this item earned.
 The name value pairs for this item.
 
 =head1 METHODS
-
-=head2 clone
-
-Clone this Item.
 
 =head2 keys
 
