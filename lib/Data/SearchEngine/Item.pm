@@ -1,13 +1,13 @@
 package Data::SearchEngine::Item;
 {
-  $Data::SearchEngine::Item::VERSION = '0.28';
+  $Data::SearchEngine::Item::VERSION = '0.29';
 }
 use Moose;
 use MooseX::Storage;
 
 # ABSTRACT: An individual search result.
 
-with 'MooseX::Storage::Deferred';
+with qw(MooseX::Storage::Deferred MooseX::Clone);
 
 
 has id => (
@@ -39,6 +39,7 @@ no Moose;
 __PACKAGE__->meta->make_immutable;
 
 1;
+
 __END__
 =pod
 
@@ -48,7 +49,7 @@ Data::SearchEngine::Item - An individual search result.
 
 =head1 VERSION
 
-version 0.28
+version 0.29
 
 =head1 SYNOPSIS
 
@@ -83,6 +84,10 @@ The score this item earned.
 The name value pairs for this item.
 
 =head1 METHODS
+
+=head2 clone
+
+Clone this Item.
 
 =head2 keys
 
