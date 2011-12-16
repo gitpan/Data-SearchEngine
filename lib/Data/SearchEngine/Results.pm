@@ -1,6 +1,6 @@
 package Data::SearchEngine::Results;
 {
-  $Data::SearchEngine::Results::VERSION = '0.30';
+  $Data::SearchEngine::Results::VERSION = '0.31';
 }
 use Moose;
 use MooseX::Storage;
@@ -60,7 +60,7 @@ Data::SearchEngine::Results - Results of a Data::SearchEngine search
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 
@@ -107,7 +107,7 @@ are likely to use.
 This module uses L<MooseX::Storage::Deferred> to provide serialization.  You
 may serialize it thusly:
 
-  my $json = $results->freeze({ format => 'JSON' };
+  my $json = $results->freeze({ format => 'JSON' });
   # ...
   my $results = Data::SearchEngine::Results->thaw($json, { format => 'JSON' });
 
