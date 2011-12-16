@@ -1,6 +1,6 @@
 package Data::SearchEngine::Results::Spellcheck;
 {
-  $Data::SearchEngine::Results::Spellcheck::VERSION = '0.31';
+  $Data::SearchEngine::Results::Spellcheck::VERSION = '0.32';
 }
 use Moose::Role;
 
@@ -55,7 +55,7 @@ Data::SearchEngine::Results::Spellcheck - spellcheck role for Spellchecking
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 SYNOPSIS
 

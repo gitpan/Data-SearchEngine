@@ -1,6 +1,6 @@
 package Data::SearchEngine::Query;
 {
-  $Data::SearchEngine::Query::VERSION = '0.31';
+  $Data::SearchEngine::Query::VERSION = '0.32';
 }
 use Moose;
 use MooseX::Storage;
@@ -67,7 +67,7 @@ has index => (
 has order => (
     traits => [qw(Digestable)],
     is => 'rw',
-    isa => 'Str|HashRef',
+    isa => 'Str|ArrayRef|HashRef',
     predicate => 'has_order'
 );
 
@@ -150,7 +150,7 @@ Data::SearchEngine::Query - Query to pass to an engine.
 
 =head1 VERSION
 
-version 0.31
+version 0.32
 
 =head1 DESCRIPTION
 
