@@ -1,6 +1,6 @@
 package Data::SearchEngine::Query;
 {
-  $Data::SearchEngine::Query::VERSION = '0.32';
+  $Data::SearchEngine::Query::VERSION = '0.33';
 }
 use Moose;
 use MooseX::Storage;
@@ -39,6 +39,14 @@ has facets => (
         set_facet => 'set',
         has_facets => 'count'
     }
+);
+
+
+has fields => (
+    traits => [qw(Digestable)],
+    is => 'rw',
+    isa => 'Str|ArrayRef[Str]',
+    predicate => 'has_fields'
 );
 
 
@@ -141,6 +149,7 @@ no Moose;
 __PACKAGE__->meta->make_immutable;
 
 1;
+
 __END__
 =pod
 
@@ -150,7 +159,7 @@ Data::SearchEngine::Query - Query to pass to an engine.
 
 =head1 VERSION
 
-version 0.32
+version 0.33
 
 =head1 DESCRIPTION
 
@@ -180,6 +189,11 @@ the predicate should be checked so that any true value results in debugging.
 A HashRef of facets used with the query.  The key should be the facet name and
 the value is the facet's value.  Consult the documentation for your backend to
 see how this is used (if at all).
+
+=head2 fields
+
+The fields to return.  Some search engine backends allow you to only return
+part of a document.
 
 =head2 filters
 
@@ -243,6 +257,10 @@ returns the count but it does the same thing.
 
 Set the value for the specified facet.
 
+=head2 has_fields
+
+Returns true if this query has fields specified.
+
 =head2 filter_names
 
 Return an array of filter names that are present in this query.
@@ -288,7 +306,7 @@ Cory G Watson <gphat@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Cold Hard Code, LLC.
+This software is copyright (c) 2012 by Cold Hard Code, LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
